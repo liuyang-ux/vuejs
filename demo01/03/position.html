@@ -67,6 +67,7 @@
       if (this.getStatus() == BMAP_STATUS_SUCCESS) {
         console.log(r.point.lng);
         console.log(r.point.lat);
+        document.querySelector('#dd').innerHTML = r.point.lng + '-' + r.point.lat;
         position.push(new BMap.Point(r.point.lat, r.point.lng));
       }
       else {
