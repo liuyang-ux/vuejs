@@ -32,10 +32,19 @@
 	    height:200px;
 	    width:100%;
 	    background:#fff;}
+      .des {
+        height: 100px;
+        width:3px;
+        background:red;
+        margin:0 auto;
+        transition: all .5s;
+      }
     </style>
   </head>
   <body>
-	  <div id="dd"></div>
+	  <div id="dd">
+      <div class="des"></div>
+    </div>
     <div id="map"></div>
     <div id="position">
       <span id="startBtn">开始定位</span>
@@ -45,22 +54,22 @@
   </body>
   <script>
 	  window.addEventListener("deviceorientation", function(event) {
-  // alpha: 围绕垂直手机屏幕的轴转动的旋转角度
-  var rotateDegrees = event.alpha;
-  // gamma: 围绕平行充电口的轴转动的旋转角度
-  var leftToRight = event.gamma;
-  // beta: 围绕平行音量键的轴转动的旋转角度
-  var frontToBack = event.beta;
- 	document.querySelector('#dd').innerHTML = rotateDegrees + '-' + leftToRight + '-' + frontToBack;
- }, true);
-  let startBtn = document.querySelector('#startBtn');
-  let endBtn = document.querySelector('#endBtn');
-  let printData = document.querySelector('#printData');
-  let map = new BMap.Map("map");
-  let timeId = null;
-  map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
-  map.enableScrollWheelZoom(true);
-  let position = [new BMap.Point(114.02597366, 22.54605355), new BMap.Point(114.02597366, 22.54605355), 111];
+      // alpha: 围绕垂直手机屏幕的轴转动的旋转角度
+      var rotateDegrees = event.alpha;
+      // gamma: 围绕平行充电口的轴转动的旋转角度
+      var leftToRight = event.gamma;
+      // beta: 围绕平行音量键的轴转动的旋转角度
+      var frontToBack = event.beta;
+      document.querySelector('.des').style.webkitTransform = 'rotate(' + rotateDegrees + 'deg)';
+    }, true);
+    let startBtn = document.querySelector('#startBtn');
+    let endBtn = document.querySelector('#endBtn');
+    let printData = document.querySelector('#printData');
+    let map = new BMap.Map("map");
+    let timeId = null;
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
+    map.enableScrollWheelZoom(true);
+    let position = [new BMap.Point(114.02597366, 22.54605355), new BMap.Point(114.02597366, 22.54605355), 111];
   
 	function getLocation() {
     new BMap.Geolocation().getCurrentPosition(function (r) {
