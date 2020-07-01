@@ -44,6 +44,7 @@
   <body>
 	  <div id="dd">
       <div class="des"></div>
+      <div class="text"></div>
     </div>
     <div id="map"></div>
     <div id="position">
@@ -60,7 +61,8 @@
       var leftToRight = event.gamma;
       // beta: 围绕平行音量键的轴转动的旋转角度
       var frontToBack = event.beta;
-      document.querySelector('.des').style.webkitTransform = 'rotate(' + rotateDegrees + 'deg)';
+      document.querySelector('.des').style.webkitTransform = 'rotate(-' + rotateDegrees + 'deg)';
+      document.querySelector('.text').innerHTML = rotateDegrees + '-' + leftToRight + '-' + frontToBack;
     }, true);
     let startBtn = document.querySelector('#startBtn');
     let endBtn = document.querySelector('#endBtn');
